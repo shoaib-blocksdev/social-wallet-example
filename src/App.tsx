@@ -9,6 +9,7 @@ function WalletApp() {
     const {address, logout, login} = useWallet()
     return (
         <>
+            <h1>Cloud wallet example</h1>
             {
                 address ? <>
                     <p>{address}</p>
