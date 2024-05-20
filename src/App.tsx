@@ -13,9 +13,9 @@ function WalletApp() {
             {
                 address ? <>
                     <p>{address}</p>
-                    <p onClick={logout}>Disconnect</p>
+                    <button onClick={logout}>Disconnect</button>
                 </> : <>
-                    <p onClick={() => login('google')}>Google Login</p>
+                    <button onClick={() => login('google')}>Google Login</button>
                     {/*<p onClick={() => login('facebook')}>Facebook Login</p>*/}
                 </>
             }
