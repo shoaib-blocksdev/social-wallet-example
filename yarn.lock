@@ -1195,10 +1195,10 @@ classnames@^2.5.1:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
-cloud-social-wallet@1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/cloud-social-wallet/-/cloud-social-wallet-1.0.10.tgz#0ee39bdbcb9f33e9d2e8b384b8e23f07774b952b"
-  integrity sha512-V2qxuO5MYlxZoZLCfjCZzcpyrHiJ8jYxnvgPk+VGlIDM9v5+8anUB9XTGgfdikTXeDxIDshoWuroCqaNmjCTpw==
+cloud-social-wallet@1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/cloud-social-wallet/-/cloud-social-wallet-1.0.13.tgz#3689b3a4bf5b3e222910bedf6e3eb79614bff788"
+  integrity sha512-tsqc71aFL7cGLzH8clsT6qwlh7qCT6qdA1Qz5/D8d/yVhlVUy/WjofrmvuoFV7tu+0oltMnLczN54ihhFpa6lQ==
   dependencies:
     "@cosmjs/cosmwasm-stargate" "^0.32.3"
     "@cosmjs/encoding" "^0.32.3"
