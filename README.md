@@ -28,10 +28,10 @@ function WalletApp() {
             {
                 address ? <>
                     <p>{address}</p>
-                    <p onClick={logout}>Disconnect</p>
+                    <button onClick={logout}>Disconnect</p>
                 </> : <>
-                    <p onClick={() => login('google')}>Google Login</p>
-                    <p onClick={() => login('facebook')}>Facebook Login</p>
+                    <button onClick={() => login('google')}>Google Login</button>
+                    <button onClick={() => login('facebook')}>Facebook Login</button>
                 </>
             }
         </>
