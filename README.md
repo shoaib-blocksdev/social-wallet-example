@@ -2,6 +2,12 @@
 
 Usage:
 ```js
+npm install cloud-social-wallet
+```
+
+```js
+import {WalletProvider} from "cloud-social-wallet";
+
 function App() {
     return (
         <WalletProvider config={{rpc: '', backend_url: ''}}>
@@ -13,6 +19,8 @@ function App() {
 
 
 ```js
+import {useWallet} from "cloud-social-wallet";
+
 function WalletApp() {
     const {address, logout, login} = useWallet()
     return (
