@@ -16,7 +16,7 @@ function WalletApp() {
                     <button onClick={logout}>Disconnect</button>
                 </> : <>
                     <button onClick={() => login('google')}>Google Login</button>
-                    {/*<p onClick={() => login('facebook')}>Facebook Login</p>*/}
+                    {/*<button onClick={() => login('facebook')}>Facebook Login</button>*/}
                 </>
             }
         </>
