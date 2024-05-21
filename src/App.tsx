@@ -27,7 +27,7 @@ function WalletApp() {
                         data-tooltip-delay-hide={500}
                         onBlur={()=> setCopied(false)}
                         onClick={copyToClipboad}>{address}</button>
-                    <button onClick={logout}>Disconnect</button>
+                    <button className="disconnect" onClick={logout}>Disconnect</button>
                 </> : <>
                     <button onClick={() => login('google')}>Google Login</button>
                     {/*<button onClick={() => login('facebook')}>Facebook Login</button>*/}
