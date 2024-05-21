@@ -2,7 +2,7 @@
 
 Usage:
 ```js
-npm install cloud-social-wallet
+yarn add cloud-social-wallet
 ```
 
 ```js
