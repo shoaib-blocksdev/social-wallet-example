@@ -8,7 +8,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <WalletProvider config={{rpc: 'https://rpc-falcron.pion-1.ntrn.tech', backend_url: 'https://cloud-wallet.cosmichub.store'}}>
+        <WalletProvider config={{prefix: 'neutron',rpc: 'https://rpc-falcron.pion-1.ntrn.tech', backend_url: 'https://cloud-wallet.cosmichub.store'}}>
             <App/>
         </WalletProvider>
     </React.StrictMode>
