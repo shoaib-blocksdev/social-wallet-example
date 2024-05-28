@@ -8,9 +8,9 @@
   font-size: .875rem;
   font-weight: bold;
   will-change: transform;
-  color: white;
-  background-color: #5e72e4;
-  border: 2px solid #5e72e4;
+  color: black;
+  background-color: #b0f49f;
+  border: 2px solid #b0f49f;
   border-radius: 5px;
   text-align: center;
   align-items: center;
@@ -18,13 +18,13 @@
 
   & :disabled{
     cursor: not-allowed;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 
   &:hover {
-    color: white;
-    background-color: #6d80ec;
-    border-color: #5e72e4;
+    color: black;
+    background-color: #bdf3b0;
+    border-color: #bdf3b0;
   }
 }
 .outline{

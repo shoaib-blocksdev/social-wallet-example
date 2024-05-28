@@ -46,7 +46,7 @@
 
 .tabs [class^="tab"] [type="radio"]:checked,
 .tabs [class*=" tab"] [type="radio"]:checked {
-    border-bottom: 2px solid #fd264f;
+    border-bottom: 2px solid #b0f49f;
 }
 
 .tabs [class^="tab"] [type="radio"]:checked + div,

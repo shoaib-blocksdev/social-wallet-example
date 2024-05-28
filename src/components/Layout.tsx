@@ -23,7 +23,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
                 </div>
                 <div id="nav-content">
                     {/*<Link to={'/'} className="nav-button active"><i className="fas fa-palette"></i><span>Home</span></Link>*/}
-                    <Link to={'/send'} className={`nav-button ${active == 'send' ? 'active' : ''}`}><i
+                    <Link to={'/send'} className={`nav-button ${active == 'send' || pathname === '/' ? 'active' : ''}`}><i
                         className="fas fa-palette"></i><span>Send</span></Link>
                     <Link to={'receive'} className={`nav-button ${active == 'receive' ? 'active' : ''}`}><i
                         className="fas fa-images"></i><span>Receive</span></Link>

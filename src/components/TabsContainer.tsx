@@ -8,7 +8,7 @@ const TabsContainenr = ({tabs, activeKey}: { tabs: Tabs, activeKey: string }) =>
             {
                 tabs.map((tab) => {
                     return (
-                        <div className="tab-2">
+                        <div className="tab-2" key={tab.key}>
                             <Link to={tab.path}>{tab.title}</Link>
                             <input id={`tab2-${tab.key}`} name="tabs-two" type="radio" checked={tab.key === activeKey}/>
                             <div>

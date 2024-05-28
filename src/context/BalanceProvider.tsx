@@ -8,11 +8,12 @@ function BalanceProvider({children}: { children: ReactNode }) {
     const [balance, setBalance] = useState(0)
     
     const getBalance = async () => {
-        // @ts-ignore
-        const balance = await client?.getBalance(address, DENOM)
-        setBalance(balance.amount/1000000)
+        if(client){
+            // @ts-ignore
+            const balance = await client?.getBalance(address, DENOM)
+            setBalance(balance.amount/1000000)
+        }
     }
-    console.log("balance.amount", balance)
 
     useEffect(() => {
         (client && balance <= 0) && getBalance()

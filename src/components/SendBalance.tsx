@@ -1,38 +1,22 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import {calculateFee, coin, GasPrice} from "@cosmjs/stargate"
 import Button from "./Button";
-import {copyToClipboard} from "../lib/utils"
 import styles from './SendBalance.module.scss'
 import classNames from "classnames"
 import {toast} from "react-toastify";
 import { useWallet } from "cloud-social-wallet";
 import { DENOM } from "../Contants";
+import {useBalance} from "../context/BalanceContext.ts";
 
 const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
     const {address, client} = useWallet()
+    const { balance } = useBalance()
     const [loading, setLoading] = useState(false)
     const [recipient, setRecipient] = useState('')
     const [amount, setAmount] = useState<string | number>()
     const [tx, setTx] = useState<any>({})
     const [error, setError] = useState(undefined)
 
-    const [balance, setBalance] = useState(0)
-    const getBalance = async () => {
-        // @ts-ignore
-        const balance = await client?.getBalance(address, DENOM)
-        setBalance(balance.amount/1000000)
-    }
-
-    useEffect(() => {
-        (client && balance <= 0) && getBalance()
-    }, [address, client])
-
-    useEffect(() => {
-       const interval  = setInterval(getBalance,5000)
-        return () => {
-            clearInterval(interval)
-        }
-    }, [])
     const send = async () => {
         setLoading(true)
         setError(undefined)
@@ -71,8 +55,6 @@ const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
     const disable = !client || !address || loading || recipient.length <= 0 || Number(amount) <= 0 || invalid
 
     return <div className="sendBalance">
-        <h1>Send</h1>
-        <small className={"small"} onClick={() => copyToClipboard(DENOM)}>{DENOM}</small>
         <label >Recipient:</label>
         <input type={"text"} value={recipient} onChange={(e) => setRecipient(e.target.value)}
                placeholder={'Recipient'}/>

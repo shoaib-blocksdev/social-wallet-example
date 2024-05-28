@@ -110,7 +110,7 @@
   width: 100%;
   label{
     display: flex;
-    color: rgb(82, 95, 127);
+    color: white;
     margin: 5px 0;
   }
 }
