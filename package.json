@@ -1,5 +1,5 @@
 {
-  "name": "wallet-example",
+  "name": "cloud-wallet",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -17,6 +17,7 @@
     "cloud-social-wallet": "1.0.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.5",
     "react-tooltip": "^5.26.4"
   },

@@ -8,7 +8,7 @@ import {toast} from "react-toastify";
 import { useWallet } from "cloud-social-wallet";
 import { DENOM } from "../Contants";
 
-const SendBalance = ({setVisibility}:{setVisibility: any}) => {
+const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
     const {address, client} = useWallet()
     const [loading, setLoading] = useState(false)
     const [recipient, setRecipient] = useState('')
@@ -33,7 +33,6 @@ const SendBalance = ({setVisibility}:{setVisibility: any}) => {
             clearInterval(interval)
         }
     }, [])
-    console.log("client", client, address)
     const send = async () => {
         setLoading(true)
         setError(undefined)

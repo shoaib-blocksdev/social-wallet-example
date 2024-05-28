@@ -1,4 +1,4 @@
-# Cloud Social Wallet example
+# Cloud Social Wallet
 
 Usage:
 ```js
