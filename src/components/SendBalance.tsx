@@ -63,9 +63,6 @@ const SendBalance = ({setVisibility}: { setVisibility?: any }) => {
         <input type={"text"} value={recipient} onChange={(e) => setRecipient(e.target.value)}
                placeholder={'Recipient'}/>
         <div className={styles.amountLabel}>
-
-        </div>
-        <div className={styles.amountLabel}>
             <label>Amount <span className={"required"}>*</span>:</label>
             <small
                 onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {token}</small>
