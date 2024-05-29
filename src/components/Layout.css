@@ -333,7 +333,15 @@ label[for=nav-footer-toggle] {
   border-radius: 99px;
   background-color: #D62929;
 }
-
 .content {
   margin-left:  calc(var(--navbar-width-min) + 300px)
+}
+.connect-wallet{
+  display: flex;
+}
+.logout-btn{
+  cursor: pointer;
+}
+#nav-footer-titlebox{
+  margin-left: 50px;
 }

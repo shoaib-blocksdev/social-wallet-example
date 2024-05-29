@@ -1,10 +1,10 @@
 import {useState} from "react"
 import {calculateFee, coin, GasPrice} from "@cosmjs/stargate"
-import Button from "./Button";
-import styles from './SendBalance.module.scss'
 import classNames from "classnames"
 import {toast} from "react-toastify";
 import { useWallet } from "cloud-social-wallet";
+import Button from "./Button";
+import styles from './SendBalance.module.scss'
 import { DENOM } from "../Contants";
 import {useBalance} from "../context/BalanceContext.ts";
 
@@ -70,7 +70,7 @@ const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
             <Button className={classNames(styles.submit, disable ? styles.disabled : '')} type={'button'} onClick={send}
                     disabled={disable}>{loading ? "Sending..." : "Send"}
             </Button>
-            <Button className={styles.close} outline type={'button'} onClick={() => setVisibility('main')}>close</Button>
+            {/*<Button className={styles.close} outline type={'button'} onClick={() => setVisibility('main')}>close</Button>*/}
         </div>
         <div className={"error"}>
             {
