@@ -9,7 +9,7 @@ import styles from './SendBalance.module.scss'
 import SelectBox from "./SelectBox.tsx";
 import useGetBalance from "../hooks/useGetBalance.ts";
 
-const SendBalance = ({setVisibility}: { setVisibility?: any }) => {
+const SendBalance = () => {
     const {address, client} = useWallet()
     const [loading, setLoading] = useState(false)
     const [token, setToken] = useState('')

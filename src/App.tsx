@@ -11,7 +11,7 @@ function App() {
     return (<div className="contianer">
         <Card className={visibility == 'main' ? "card" : ""}>
             {visibility == 'send' ?
-                <SendBalance setVisibility={setVisibility}/> : visibility == 'query' ?
+                <SendBalance/> : visibility == 'query' ?
                 <GetBalance setVisibility={setVisibility}/> :
                 <Header setVisibility={setVisibility}/>
             }
