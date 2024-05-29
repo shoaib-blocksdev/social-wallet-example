@@ -2,20 +2,22 @@ import {useState} from "react"
 import {calculateFee, coin, GasPrice} from "@cosmjs/stargate"
 import classNames from "classnames"
 import {toast} from "react-toastify";
-import { useWallet } from "cloud-social-wallet";
+import {useWallet} from "cloud-social-wallet";
+import {Tooltip} from "react-tooltip";
 import Button from "./Button";
 import styles from './SendBalance.module.scss'
-import { DENOM } from "../Contants";
-import {useBalance} from "../context/BalanceContext.ts";
+import SelectBox from "./SelectBox.tsx";
+import useGetBalance from "../hooks/useGetBalance.ts";
 
-const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
+const SendBalance = ({setVisibility}: { setVisibility?: any }) => {
     const {address, client} = useWallet()
-    const { balance } = useBalance()
     const [loading, setLoading] = useState(false)
+    const [token, setToken] = useState('')
     const [recipient, setRecipient] = useState('')
     const [amount, setAmount] = useState<string | number>()
     const [tx, setTx] = useState<any>({})
     const [error, setError] = useState(undefined)
+    const {balance} = useGetBalance(token)
 
     const send = async () => {
         setLoading(true)
@@ -26,15 +28,15 @@ const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
 //                recipient: recipient, amount: `${Number(amount) * 1000000}`,
 //            }
 //        }
-        const gasPrice = GasPrice.fromString("0.03"+DENOM);
+        const gasPrice = GasPrice.fromString("0.03" + token);
         const txFee = calculateFee(2000000, gasPrice);
-        try{
+        try {
             // let tx = await client.execute(address,token, msg, txFee, "Transfer Funds to Wallet")
             // @ts-ignore
-            let tx = await client?.sendTokens(
+            const tx = await client?.sendTokens(
                 address,
                 recipient,
-                [coin(Number(amount)*1000000, DENOM)],
+                [coin(Number(amount) * 1000000, token)],
                 txFee,
                 "Successfully Transferred"
             );
@@ -42,10 +44,10 @@ const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
             setTx(tx)
             setError(undefined)
             toast.success('Successfully Transferred')
-        }catch (e:any){
+        } catch (e: any) {
             setTx({})
             const msg = e.message.substring(e.message.indexOf("failed to execute message;"))?.substring(0, 800);
-            console.error("e",e.message)
+            console.error("e", e.message)
             toast.error(msg)
             setError(msg)
         }
@@ -54,22 +56,34 @@ const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
     const invalid = Number(amount) > balance
     const disable = !client || !address || loading || recipient.length <= 0 || Number(amount) <= 0 || invalid
 
-    return <div className="sendBalance">
-        <label >Recipient:</label>
+    return (<div className="sendBalance">
+        <label>Token<span className={"required"}>*</span>:</label>
+        <SelectBox onSelect={(t) => setToken(t)}/>
+        <label>Recipient <span className={"required"}>*</span>:</label>
         <input type={"text"} value={recipient} onChange={(e) => setRecipient(e.target.value)}
                placeholder={'Recipient'}/>
         <div className={styles.amountLabel}>
-            <label>Amount:</label>
-            <small onClick={() => setAmount(balance-0.5)}>{balance.toFixed(6)} {DENOM}</small>
+
+        </div>
+        <div className={styles.amountLabel}>
+            <label>Amount <span className={"required"}>*</span>:</label>
+            <small
+                onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {token}</small>
         </div>
         <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'Amount'}/>
         {
             invalid && <small className={styles.error}>insufficient balance</small>
         }
         <div className="sendBalancebuttons">
-            <Button className={classNames(styles.submit, disable ? styles.disabled : '')} type={'button'} onClick={send}
-                    disabled={disable}>{loading ? "Sending..." : "Send"}
+            <Button
+                data-tooltip-id="low-balance"
+                data-tooltip-content={balance <= 0 ? "Low Balance" : ""}
+                className={classNames(styles.submit, disable ? styles.disabled : '')}
+                type={'button'}
+                onClick={send}
+                disabled={disable}>{loading ? "Sending..." : "Send"}
             </Button>
+            <Tooltip id="low-balance"/>
             {/*<Button className={styles.close} outline type={'button'} onClick={() => setVisibility('main')}>close</Button>*/}
         </div>
         <div className={"error"}>
@@ -77,12 +91,17 @@ const SendBalance = ({setVisibility}:{setVisibility?: any}) => {
                 error && <small>{error}</small>
             }
         </div>
-        <div  className={"msg"}>
+        <div className={"msg"}>
             {
-                !error && (Object.keys(tx).length && tx?.transactionHash) ? <small>Successfully Transferred</small> : null
+                !error && (Object.keys(tx).length && tx?.transactionHash) ?
+                    <small>Successfully Transferred</small> : null
             }
+            {/*{*/}
+            {/*    (balance <= 0 && !balLoading) ?*/}
+            {/*        <small>Insufficient Balance</small> : null*/}
+            {/*}*/}
         </div>
-    </div>
+    </div>)
 }
 
 export default SendBalance

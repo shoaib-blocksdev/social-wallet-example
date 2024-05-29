@@ -80,72 +80,82 @@
     transform: rotate(360deg);
   }
 }
-.App{
+.App {
   display: flex;
   justify-content: center;
   align-content: center;
 }
-.contianer{
+.contianer {
   width: 400px;
   max-width: 400px;
 }
-.card{
+.card {
   height: 100%;
 }
-.wallet{
+.wallet {
   display: flex;
   flex-direction: column;
 }
-.buttons{
+.buttons {
   display: flex;
   flex-direction: row;
 }
-.buttons button{
-    margin: 0 5px;
+.buttons button {
+  margin: 0 5px;
 }
-.sendBalance{
+.sendBalance {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 100%;
-  label{
+  width: 86%;
+  position: relative;
+  label {
     display: flex;
     color: white;
     margin: 5px 0;
   }
 }
+.required{
+  color: #bf3232;
+  margin-left: 2px;
+}
 
-.sendBalance h1{
+.sendBalance h1 {
   line-height: 0.1;
   margin-top: 20px;
 }
-.sendBalance .small{
+.sendBalance .small {
   margin-bottom: 20px;
   cursor: pointer;
 }
-.sendBalance input{
+.sendBalance input {
   margin: 5px 0;
-  padding: 5px;
+  padding: 7px 40px 7px 12px;
   height: 30px;
   font-size: 15px;
+  border-radius: 5px;
 }
-.sendBalancebuttons{
+.sendBalance input:focus, .sendBalance input:active, .sendBalance input:focus-visible {
+  border-color: transparent;
+  outline: none;
+}
+.sendBalancebuttons {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.sendBalancebuttons .clsoe{
+.sendBalancebuttons .clsoe {
   display: flex;
   flex: 1;
   padding: 10px;
 }
-.msg{
+.msg {
   color: green;
-  margin-top: 20px;
+  margin-top: 5px;
   text-align: center;
 }
-.error{
+.error {
   color: red;
   margin-top: 20px;
   text-align: center;

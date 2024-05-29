@@ -334,14 +334,37 @@ label[for=nav-footer-toggle] {
   background-color: #D62929;
 }
 .content {
-  margin-left:  calc(var(--navbar-width-min) + 300px)
+  margin-left: calc(var(--navbar-width-min) + 300px)
 }
-.connect-wallet{
+.content-sm {
+  margin: 20px;
+  margin-left: 0;
+}
+/**
+  Mob Design
+**/
+.balance-sm {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2a2727;
+  border-radius: 5px;
+  padding: 10px;
+}
+.balance-sm .balance {
+  padding: 10px 0 0 10px;
+}
+.balance-sm .logout-sm {
+  color: #bd7d7d;
+  padding-right: 10px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.connect-wallet {
   display: flex;
 }
-.logout-btn{
+.logout-btn {
   cursor: pointer;
 }
-#nav-footer-titlebox{
+#nav-footer-titlebox {
   margin-left: 50px;
 }
