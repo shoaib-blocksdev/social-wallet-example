@@ -1255,10 +1255,10 @@ classnames@^2.3.0, classnames@^2.5.1:
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
-cloud-social-wallet@1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/cloud-social-wallet/-/cloud-social-wallet-1.0.14.tgz#ed617405f7de31693fcaacc8c60bb1b17e50bda2"
-  integrity sha512-Mghe8xEcE1lCR10RYlqSexhpePqWUIQA0y7czIPQnn2Ju+/X+50zrbWC3t/61ppr9pP7SJtyQ3xrcJA4O+/IJg==
+cloud-social-wallet@1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/cloud-social-wallet/-/cloud-social-wallet-1.0.16.tgz#13217d15e2b34980ed6b67d86cf25d0c2d20a0c0"
+  integrity sha512-KiDPB47HJ7kgWadootv3HkRXVYbiqFD2RpfsVmOVf3jIP9qfr4ogGEim3nuXonAX0O6oRvAwZaRn6uE3y7ex8w==
   dependencies:
     "@cosmjs/cosmwasm-stargate" "^0.32.3"
     "@cosmjs/encoding" "^0.32.3"
@@ -1272,9 +1272,9 @@ cloud-social-wallet@1.0.14:
     socket.io-client "^4.7.5"
     vite-plugin-dts "^3.6.3"
 
-"cloud-wallet@https://github.com/shoaib-blocksdev/cloud-wallet":
+"cloud-wallet@git+https://github.com/shoaib-blocksdev/cloud-wallet.git":
   version "0.0.0"
-  resolved "https://github.com/shoaib-blocksdev/cloud-wallet#8cd1935b73fa4837a0ffdfddde3058e3d4b4e8c4"
+  resolved "git+https://github.com/shoaib-blocksdev/cloud-wallet.git#8cd1935b73fa4837a0ffdfddde3058e3d4b4e8c4"
 
 clsx@^2.1.0:
   version "2.1.1"
@@ -1685,11 +1685,6 @@ follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
-
-font-awesome@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
-  integrity sha512-U6kGnykA/6bFmg1M/oT9EkFeIYv7JlX3bozwQJWiiLz6L0w3F5vBVPxHlwyX/vtNq1ckcpRKOB9f2Qal/VtFpg==
 
 form-data@^4.0.0:
   version "4.0.0"

@@ -18,17 +18,17 @@ const Layout = ({children}: { children?: ReactNode }) => {
     return (address ? <div className={"body"}>
             {
                 screenWidth <= 656 ? <div className={"content content-sm"}>
-                            <div className={"balance-sm"}>
-                                <div className={"balance"}>
-                                    <h6>Balance</h6>
-                                    <h2>{balance} <span>{DENOM}</span></h2>
-                                </div>
-                                <div className={"logout-sm"}>
-                                    <p onClick={logout}>logout</p>
-                                </div>
+                        <div className={"balance-sm"}>
+                            <div className={"balance"}>
+                                <h6>Balance</h6>
+                                <h2>{balance} <span>{DENOM}</span></h2>
                             </div>
-                            {children}
-                        </div> :
+                            <div className={"logout-sm"}>
+                                <p onClick={logout}>logout</p>
+                            </div>
+                        </div>
+                        {children}
+                    </div> :
                     <>
                         <div id="nav-bar">
                             <input id="nav-toggle" type="checkbox"/>
@@ -74,6 +74,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
         </div> : <div className={"body"}>
             <div className="connect-wallet">
                 <Button outline type={'button'} onClick={() => login('google')}>Login with Google</Button>
+                <Button outline type={'button'} onClick={() => login('twitter')}>Login with Twitter</Button>
             </div>
         </div>
     )

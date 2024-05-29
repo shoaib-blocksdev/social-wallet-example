@@ -361,6 +361,8 @@ label[for=nav-footer-toggle] {
 }
 .connect-wallet {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .logout-btn {
   cursor: pointer;
