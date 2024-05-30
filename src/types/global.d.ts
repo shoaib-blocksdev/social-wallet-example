@@ -8,3 +8,20 @@ export type Tab = {
 }
 
 export type Tabs = Tab[]
+
+export {};
+
+declare global {
+    type NETWORK = {
+        name: string,
+        title: string,
+        chainId: string,
+        chain: string,
+        rpc: string,
+        socket: string,
+        rest?: string,
+        denom: string,
+        prefix: string,
+        token: string
+    }
+}

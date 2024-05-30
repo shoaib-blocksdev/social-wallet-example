@@ -14,13 +14,14 @@ import Home from "./components/Home.tsx";
 import BalanceProvider from "./context/BalanceProvider.tsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {NETWORK} from "./Network.ts";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <WalletProvider config={{
-            prefix: 'neutron',
-            rpc: 'https://rpc-falcron.pion-1.ntrn.tech',
-            backend_url: 'https://cloud-wallet.cosmichub.store'
+            prefix: NETWORK.prefix,
+            rpc: NETWORK.rpc,
+            backend_url: NETWORK.socket
         }}>
             <Router>
                 <BalanceProvider>

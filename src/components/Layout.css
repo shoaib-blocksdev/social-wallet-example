@@ -336,6 +336,11 @@ label[for=nav-footer-toggle] {
 .content {
   margin-left: calc(var(--navbar-width-min) + 300px)
 }
+.network {
+  color: #b0f49f;
+  text-transform: capitalize;
+  font-size: 30px;
+}
 .content-sm {
   margin: 20px;
   margin-left: 0;

@@ -1,7 +1,7 @@
 import {ReactNode, useEffect, useState} from "react";
 import BalanceContext from "./BalanceContext.ts";
 import { useWallet } from "cloud-social-wallet";
-import {DENOM} from "../Contants.ts";
+import {NETWORK} from "../Network.ts";
 
 function BalanceProvider({children}: { children: ReactNode }) {
     const {address, client} = useWallet()
@@ -10,7 +10,7 @@ function BalanceProvider({children}: { children: ReactNode }) {
     const getBalance = async () => {
         if(client){
             // @ts-ignore
-            const balance = await client?.getBalance(address, DENOM)
+            const balance = await client?.getBalance(address, NETWORK.denom)
             setBalance(balance.amount/1000000)
         }
     }

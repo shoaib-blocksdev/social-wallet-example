@@ -2,10 +2,10 @@ import './Layout.css'
 import {ReactNode} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {useBalance} from "../context/BalanceContext.ts";
-import {DENOM} from "../Contants.ts";
 import {useWallet} from "cloud-social-wallet";
 import Button from './Button.tsx';
 import useScreen from "../hooks/useScreen.ts";
+import {network, NETWORK} from "../Network.ts";
 
 const Layout = ({children}: { children?: ReactNode }) => {
     const {address, login, logout} = useWallet()
@@ -21,7 +21,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
                         <div className={"balance-sm"}>
                             <div className={"balance"}>
                                 <h6>Balance</h6>
-                                <h2>{balance} <span>{DENOM}</span></h2>
+                                <h2>{balance} <span>{NETWORK.denom}</span></h2>
                             </div>
                             <div className={"logout-sm"}>
                                 <p onClick={logout}>logout</p>
@@ -35,7 +35,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
                             <div id="nav-header">
                                 <div className={"balance"}>
                                     <h6>Balance</h6>
-                                    <h2>{balance} <span>{DENOM}</span></h2>
+                                    <h2>{balance} <span>{NETWORK.denom}</span></h2>
                                 </div>
                                 {/*<label htmlFor="nav-toggle"><span id="nav-toggle-burger"></span></label>*/}
                                 <hr/>
@@ -67,6 +67,9 @@ const Layout = ({children}: { children?: ReactNode }) => {
                             </div>
                         </div>
                         <div className={"content"}>
+                            {
+                                network === 'mainnet' && <h1 className="network">{network}</h1>
+                            }
                             {children}
                         </div>
                     </>
