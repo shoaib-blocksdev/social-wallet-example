@@ -78,7 +78,8 @@ const SendBalance = () => {
                 className={classNames(styles.submit, disable ? styles.disabled : '')}
                 type={'button'}
                 onClick={send}
-                disabled={disable}>{loading ? "Sending..." : "Send"}
+                disabled={disable}
+            >{loading ? "Sending..." : "Send"}
             </Button>
             <Tooltip id="low-balance"/>
             {/*<Button className={styles.close} outline type={'button'} onClick={() => setVisibility('main')}>close</Button>*/}
