@@ -80,7 +80,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
                         </div>
                         <div className={"content"}>
                             {
-                                network === 'mainnet' && <h1 className="network">{network}</h1>
+                                network === 'mainnet' && <h1 className="network">{network} <span>beta</span></h1>
                             }
                             {children}
                         </div>

@@ -336,6 +336,9 @@ label[for=nav-footer-toggle] {
 .content {
   margin-left: calc(var(--navbar-width-min) + 300px)
 }
+.content .network span{
+  font-size: 13px;
+}
 .network {
   color: #b0f49f;
   text-transform: capitalize;
