@@ -5,7 +5,7 @@ import {copyToClipboard, shortAddress} from "../lib/utils"
 import styles from './Header.module.scss'
 import Button from "./Button"
 import { useWallet } from "cloud-social-wallet";
-import { DENOM, CHAIN_PREFIX } from "../Contants";
+import {NETWORK} from "../Network.ts";
 const Header = ({setVisibility}: { setVisibility: any}) => {
     const {address, client, login, logout} = useWallet()
     const [balance, setBalance] = useState(0)
@@ -14,7 +14,7 @@ const Header = ({setVisibility}: { setVisibility: any}) => {
         try{
             if(client && address) {
                 // @ts-ignore
-                const bal = await client?.getBalance(address, DENOM)
+                const bal = await client?.getBalance(address, NETWORK.denom)
                 setBalance(bal.amount / 1000000)
             }
         }catch (e){
@@ -46,7 +46,7 @@ const Header = ({setVisibility}: { setVisibility: any}) => {
             <div className={styles.footer}>
                 {
                     address ? <Fragment>
-                            <p className={styles.balance}>Available: <span className={styles.amount}>{balance} {CHAIN_PREFIX}</span> </p>
+                            <p className={styles.balance}>Available: <span className={styles.amount}>{balance} {NETWORK.prefix}</span> </p>
                         <div className={styles.mainButtons}>
                         <div className={styles.buttons}>
                             <Button onClick={() => setVisibility('send')} outline className={styles.button}>Send</Button>
