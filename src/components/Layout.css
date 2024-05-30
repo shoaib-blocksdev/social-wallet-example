@@ -375,3 +375,6 @@ label[for=nav-footer-toggle] {
 #nav-footer-titlebox {
   margin-left: 50px;
 }
+.loading{
+  color: #b0f49f;
+}

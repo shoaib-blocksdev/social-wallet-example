@@ -1,5 +1,5 @@
 import './Layout.css'
-import {ReactNode} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {useBalance} from "../context/BalanceContext.ts";
 import {useWallet} from "cloud-social-wallet";
@@ -8,6 +8,7 @@ import useScreen from "../hooks/useScreen.ts";
 import {network, NETWORK} from "../Network.ts";
 
 const Layout = ({children}: { children?: ReactNode }) => {
+    const [initLoading, setInitLoading] = useState(true)
     const {address, login, logout} = useWallet()
     const location = useLocation();
     const {pathname} = location;
@@ -15,7 +16,18 @@ const Layout = ({children}: { children?: ReactNode }) => {
     const {balance} = useBalance()
     const screenWidth = useScreen()
 
-    return (address ? <div className={"body"}>
+    useEffect(() => {
+        const timer = setTimeout(() => setInitLoading(false), 2000)
+        return () => clearTimeout(timer)
+    }, [])
+
+    return (initLoading ?  <div className={"body"}>
+            <div className="loading">
+                Loading...
+            </div>
+        </div>
+
+        : address ? <div className={"body"}>
             {
                 screenWidth <= 656 ? <div className={"content content-sm"}>
                         <div className={"balance-sm"}>
