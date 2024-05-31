@@ -7,7 +7,7 @@ import {Tooltip} from "react-tooltip";
 import Button from "./Button";
 import styles from './SendBalance.module.scss'
 import SelectBox from "./SelectBox.tsx";
-import useGetBalance from "../hooks/useGetBalance.ts";
+import {useGetBalance} from "../hooks";
 
 const SendBalance = () => {
     const {address, client} = useWallet()

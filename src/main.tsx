@@ -9,8 +9,7 @@ import {WalletProvider} from "cloud-social-wallet";
 import './index.css'
 import './App.css'
 import 'react-tooltip/dist/react-tooltip.css'
-import Layout from './components/Layout.tsx';
-import Home from "./components/Home.tsx";
+import {Layout, Home} from './components';
 import BalanceProvider from "./context/BalanceProvider.tsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

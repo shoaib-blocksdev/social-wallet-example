@@ -1,10 +1,10 @@
 import './Layout.css'
 import {ReactNode, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import {useBalance} from "../context/BalanceContext.ts";
 import {useWallet} from "cloud-social-wallet";
+import {useBalance} from "../context";
 import Button from './Button.tsx';
-import useScreen from "../hooks/useScreen.ts";
+import {useScreen} from "../hooks";
 import {network, NETWORK} from "../Network.ts";
 
 const Layout = ({children}: { children?: ReactNode }) => {
