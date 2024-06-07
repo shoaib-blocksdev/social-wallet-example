@@ -4,21 +4,24 @@ import {useEffect, useState} from "react"
 
 const useGetBalance = (token?: string) => {
     const {address, client} = useWallet()
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [balance, setBalance] = useState(0)
 
     const getBalance = async () => {
         setLoading(true);
         try {
             if (client && address) {
-                if(token?.startsWith('u')){
+                if (token?.startsWith('u')) {
                     // @ts-ignore
                     const bal = await client?.getBalance(address, token)
                     setBalance(bal.amount / 1000000)
-                }else{
+                } else {
                     // @ts-ignore
-                    // @todo write query for non native token
-                    const bal = await client?.getBalance(address, token)
+                    const bal = client?.queryContractSmart(token, {
+                        balance: {
+                            address
+                        }
+                    })
                     setBalance(bal.amount / 1000000)
                 }
             }
@@ -28,7 +31,7 @@ const useGetBalance = (token?: string) => {
     }
 
     useEffect(() => {
-        balance <= 0 && getBalance()?.finally(()=>{
+        balance <= 0 && getBalance()?.finally(() => {
             setLoading(false);
         })
     }, [address, client])
