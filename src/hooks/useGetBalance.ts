@@ -17,6 +17,7 @@ const useGetBalance = (token?: string) => {
                     setBalance(bal.amount / 1000000)
                 }else{
                     // @ts-ignore
+                    // @todo write query for non native token
                     const bal = await client?.getBalance(address, token)
                     setBalance(bal.amount / 1000000)
                 }
