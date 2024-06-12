@@ -24,4 +24,14 @@ declare global {
         prefix: string,
         token: string
     }
+
+    type Token = {
+        token: string,
+        isNative: boolean,
+        address: string
+    }
+
+    type Tokens = {
+        [type: string]:  Token
+    }
 }

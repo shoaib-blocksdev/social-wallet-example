@@ -8,11 +8,12 @@ import Button from "./Button";
 import styles from './SendBalance.module.scss'
 import {useGetBalance} from "../hooks";
 import SelectBox from "./SelectBox";
+import {tokens} from "../Network.ts";
 
 const SendBalance = () => {
     const {address, client} = useWallet()
     const [token, setToken] = useState('')
-    const {balance} = useGetBalance(token)
+    const {balance, refetch, reset} = useGetBalance(token)
 
     const [loading, setLoading] = useState(false)
     const [recipient, setRecipient] = useState('')
@@ -57,16 +58,21 @@ const SendBalance = () => {
     const invalid = Number(amount) > balance
     const disable = !client || !address || loading || recipient.length <= 0 || Number(amount) <= 0 || invalid
 
+    const onChangeToken = (t: string) => {
+        setToken(t);
+        reset?.();
+        refetch?.();
+    }
     return (<div className="sendBalance">
         <label>Token<span className={"required"}>*</span>:</label>
-        <SelectBox onSelect={(t) => setToken(t)}/>
+        <SelectBox onSelect={onChangeToken}/>
         <label>Recipient <span className={"required"}>*</span>:</label>
         <input type={"text"} value={recipient} onChange={(e) => setRecipient(e.target.value)}
                placeholder={'Recipient'}/>
         <div className={styles.amountLabel}>
             <label>Amount <span className={"required"}>*</span>:</label>
             <small
-                onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {token}</small>
+                onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {tokens?.[token]?.token ?? token}</small>
         </div>
         <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'Amount'}/>
         {

@@ -55,3 +55,12 @@ export const NETWORKS = {
     }
 }
 export const NETWORK = NETWORKS['loop'][network] as NETWORK
+
+
+export const tokens: Tokens = {
+    "loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk": {
+        token: "COPNTEST",
+        isNative: false,
+        address: "loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk"
+    }
+}

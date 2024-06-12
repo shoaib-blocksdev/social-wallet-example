@@ -9,18 +9,18 @@ const useGetBalance = (token?: string) => {
         setLoading(true);
 //        try {
             if (client && address) {
-                if (token?.startsWith('u') || token?.startsWith('t')) {
+                if (token?.startsWith('u') || token?.startsWith('token')) {
                     // @ts-ignore
                     const bal = await client?.getBalance(address, token)
                     setBalance(bal.amount / 1000000)
                 } else {
                     // @ts-ignore
-                    const bal = client?.queryContractSmart(token, {
+                    const bal = await client?.queryContractSmart(token, {
                         balance: {
                             address
                         }
                     })
-                    setBalance(bal.amount / 1000000)
+                    setBalance(bal.balance / 1000000)
                 }
             }
 //        } catch (e) {
@@ -29,12 +29,12 @@ const useGetBalance = (token?: string) => {
     }
 
     useEffect(() => {
-        balance <= 0 && getBalance()?.finally(() => {
+        getBalance()?.finally(() => {
             setLoading(false);
         })
     }, [address, client])
 
-    return {balance, refetch: getBalance, loading}
+    return {balance, refetch: getBalance, loading, reset: () => setBalance(0)}
 }
 
 export default useGetBalance
