@@ -8,12 +8,12 @@ import Button from "./Button";
 import styles from './SendBalance.module.scss'
 import {useGetBalance} from "../hooks";
 import SelectBox from "./SelectBox";
-import {tokens} from "../Network.ts";
+import {COPNTEST, tokens} from "../Network.ts";
 import {isNative} from "../lib/utils.ts";
 
 const SendBalance = () => {
     const {address, client} = useWallet()
-    const [token, setToken] = useState('loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk')
+    const [token, setToken] = useState(COPNTEST)
     const {balance, refetch} = useGetBalance({token})
 
     const [loading, setLoading] = useState(false)

@@ -56,9 +56,9 @@ export const NETWORKS = {
 }
 export const NETWORK = NETWORKS['loop'][network] as NETWORK
 
-
+export const COPNTEST = 'loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk'
 export const tokens: Tokens = {
-    "loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk": {
+    [COPNTEST]: {
         token: "COPNTEST",
         isNative: false,
         address: "loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk"
