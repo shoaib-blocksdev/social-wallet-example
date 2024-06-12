@@ -90,7 +90,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
         </div> : <div className={"body"}>
             <div className="connect-wallet">
                 <Button outline type={'button'} onClick={() => login('google')}>Login with Google</Button>
-                <Button outline type={'button'} onClick={() => login('twitter')}>Login with Twitter</Button>
+                <Button outline type={'button'} className={'disabled'} disabled={true} onClick={() => login('twitter')}>Login with Twitter</Button>
             </div>
         </div>
     )

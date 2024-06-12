@@ -37,56 +37,56 @@ const SendBalance = () => {
 //        }
         const gasPrice = GasPrice.fromString("0.03" + "upoa");
         const txFee = calculateFee(2000000, gasPrice);
-//        try {
-        // let tx = await client.execute(address,token, msg, txFee, "Transfer Funds to Wallet")
-        let tx = undefined
-        if (isNative(token)) {
-            // @ts-ignore
-            tx = await client?.sendTokens(
-                address,
-                recipient,
-                [coin(Number(amount) * 1000000, token)],
-                txFee,
-                "Successfully Transferred"
-            );
-        } else {
-            console.log("msg", {
-                token,
-                txFee,
-                transfer: {
-                    owner: address,
-                    recipient: recipient,
-                    amount: Number(amount) * 1000000
-                }
-            })
-            // @ts-ignore
-            tx = await client?.execute(
-                address,
-                token,
-                {
+        try {
+            // let tx = await client.execute(address,token, msg, txFee, "Transfer Funds to Wallet")
+            let tx = undefined
+            if (isNative(token)) {
+                // @ts-ignore
+                tx = await client?.sendTokens(
+                    address,
+                    recipient,
+                    [coin(Number(amount) * 1000000, token)],
+                    txFee,
+                    "Successfully Transferred"
+                );
+            } else {
+                console.log("msg", {
+                    token,
+                    txFee,
                     transfer: {
                         owner: address,
                         recipient: recipient,
-                        amount: `${Number(amount) * 1000000}`
+                        amount: Number(amount) * 1000000
                     }
-                },
-                txFee,
-                "Transferred"
-            );
+                })
+                // @ts-ignore
+                tx = await client?.execute(
+                    address,
+                    token,
+                    {
+                        transfer: {
+                            owner: address,
+                            recipient: recipient,
+                            amount: `${Number(amount) * 1000000}`
+                        }
+                    },
+                    txFee,
+                    "Transferred"
+                );
+            }
+            console.log(tx);
+            setTx(tx)
+            setError(undefined)
+            resetForm();
+            refetch?.()
+            toast.success('Successfully Transferred')
+        } catch (e: any) {
+            setTx({})
+            const msg = e.message.substring(e.message.indexOf("failed to execute message;"))?.substring(0, 800);
+            console.error("e", e.message)
+            toast.error(msg)
+            setError(msg)
         }
-        console.log(tx);
-        setTx(tx)
-        setError(undefined)
-        resetForm();
-        refetch?.()
-        toast.success('Successfully Transferred')
-//        } catch (e: any) {
-//            setTx({})
-//            const msg = e.message.substring(e.message.indexOf("failed to execute message;"))?.substring(0, 800);
-//            console.error("e", e.message)
-//            toast.error(msg)
-//            setError(msg)
-//        }
         setLoading(false)
     }
     const invalid = Number(amount) > balance
