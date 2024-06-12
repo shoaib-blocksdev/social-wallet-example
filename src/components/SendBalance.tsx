@@ -8,7 +8,7 @@ import Button from "./Button";
 import styles from './SendBalance.module.scss'
 import {useGetBalance} from "../hooks";
 import SelectBox from "./SelectBox";
-import {NETWORK, tokens} from "../Network.ts";
+import {tokens} from "../Network.ts";
 import {isNative} from "../lib/utils.ts";
 
 const SendBalance = () => {
