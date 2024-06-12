@@ -5,12 +5,11 @@ const useGetBalance = (token?: string) => {
     const {address, client} = useWallet()
     const [loading, setLoading] = useState(false)
     const [balance, setBalance] = useState(0)
-
     const getBalance = async () => {
         setLoading(true);
-        try {
+//        try {
             if (client && address) {
-                if (token?.startsWith('u')) {
+                if (token?.startsWith('u') || token?.startsWith('t')) {
                     // @ts-ignore
                     const bal = await client?.getBalance(address, token)
                     setBalance(bal.amount / 1000000)
@@ -24,9 +23,9 @@ const useGetBalance = (token?: string) => {
                     setBalance(bal.amount / 1000000)
                 }
             }
-        } catch (e) {
-            setBalance(0)
-        }
+//        } catch (e) {
+//            setBalance(0)
+//        }
     }
 
     useEffect(() => {

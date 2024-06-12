@@ -13,7 +13,8 @@ const SelectBox = ({onSelect}: { onSelect: (token: string) => void }) => {
         <label className="select" htmlFor="slct">
             <select id="slct" required={true} value={selected} onChange={(e) => setSelected(e.target.value)}>
                 {/*<option value="" disabled={true}>Select token</option>*/}
-                <option value={NETWORK.denom}>NTRN</option>
+                <option value={NETWORK.denom}>{NETWORK.token}</option>
+                <option value={NETWORK.denom}>{NETWORK.token}</option>
             </select>
         </label>
     )
