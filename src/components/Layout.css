@@ -375,6 +375,9 @@ label[for=nav-footer-toggle] {
 .logout-btn {
   cursor: pointer;
 }
+.logout-btn:hover {
+  color: #bd7d7d;
+}
 #nav-footer-titlebox {
   margin-left: 50px;
 }

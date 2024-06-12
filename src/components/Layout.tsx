@@ -26,7 +26,6 @@ const Layout = ({children}: { children?: ReactNode }) => {
                 Loading...
             </div>
         </div>
-
         : address ? <div className={"body"}>
             {
                 screenWidth <= 656 ? <div className={"content content-sm"}>
@@ -80,7 +79,10 @@ const Layout = ({children}: { children?: ReactNode }) => {
                         </div>
                         <div className={"content"}>
                             {
-                                network === 'mainnet' && <h1 className="network">{network} <span>beta</span></h1>
+                                network === 'mainnet' && <h1 className="network">{network}
+                                    {/*<span>beta</span>*/}
+
+                                </h1>
                             }
                             {children}
                         </div>

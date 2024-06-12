@@ -1,7 +1,7 @@
 import {useLocation} from "react-router-dom";
-import SendBalance from "./SendBalance.tsx";
-import TabsContainer from "./TabsContainer.tsx";
-import ReceiveToken from "./ReceiveToken.tsx";
+import SendBalance from "./SendBalance";
+import TabsContainer from "./TabsContainer";
+import ReceiveToken from "./ReceiveToken";
 
 const Tabs = [
     {

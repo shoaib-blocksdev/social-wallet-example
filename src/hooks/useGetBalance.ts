@@ -1,7 +1,6 @@
 import {useWallet} from "cloud-social-wallet"
 import {useEffect, useState} from "react"
 
-
 const useGetBalance = (token?: string) => {
     const {address, client} = useWallet()
     const [loading, setLoading] = useState(false)

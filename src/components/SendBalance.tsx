@@ -1,23 +1,24 @@
 import {useState} from "react"
 import {calculateFee, coin, GasPrice} from "@cosmjs/stargate"
+import {useWallet} from "cloud-social-wallet";
 import classNames from "classnames"
 import {toast} from "react-toastify";
-import {useWallet} from "cloud-social-wallet";
 import {Tooltip} from "react-tooltip";
 import Button from "./Button";
 import styles from './SendBalance.module.scss'
-import SelectBox from "./SelectBox.tsx";
 import {useGetBalance} from "../hooks";
+import SelectBox from "./SelectBox";
 
 const SendBalance = () => {
     const {address, client} = useWallet()
-    const [loading, setLoading] = useState(false)
     const [token, setToken] = useState('')
+    const {balance} = useGetBalance(token)
+
+    const [loading, setLoading] = useState(false)
     const [recipient, setRecipient] = useState('')
     const [amount, setAmount] = useState<string | number>()
     const [tx, setTx] = useState<any>({})
     const [error, setError] = useState(undefined)
-    const {balance} = useGetBalance(token)
 
     const send = async () => {
         setLoading(true)

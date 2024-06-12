@@ -6,13 +6,13 @@ import {
     Routes
 } from "react-router-dom";
 import {WalletProvider} from "cloud-social-wallet";
+import { ToastContainer } from 'react-toastify';
 import './index.css'
 import './App.css'
 import 'react-tooltip/dist/react-tooltip.css'
+import 'react-toastify/dist/ReactToastify.css';
 import {Layout, Home} from './components';
 import BalanceProvider from "./context/BalanceProvider.tsx";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {NETWORK} from "./Network.ts";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

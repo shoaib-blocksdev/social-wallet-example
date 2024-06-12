@@ -1,14 +1,14 @@
 import {useEffect, useState} from "react"
+import { useWallet } from "cloud-social-wallet"
 import Button from "./Button"
 import styles from './SendBalance.module.scss'
-import { useWallet } from "cloud-social-wallet"
 import {NETWORK} from "../Network.ts";
 
 const GetBalance = ({setVisibility}:{setVisibility?: any}) => {
     const {client} = useWallet()
     const [recipient, setRecipient] = useState('')
-
     const [balance, setBalance] = useState(0)
+    
     const getBalance = async () => {
         try{
             if(client && recipient) {
