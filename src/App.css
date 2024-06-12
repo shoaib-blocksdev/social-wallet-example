@@ -141,10 +141,13 @@
 }
 .sendBalancebuttons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 20px;
 }
-
+.cancel-btn{
+color: red;
+}
 .sendBalancebuttons .clsoe {
   display: flex;
   flex: 1;

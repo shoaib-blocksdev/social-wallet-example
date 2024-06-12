@@ -1,5 +1,6 @@
 import {useWallet} from "cloud-social-wallet"
 import {useEffect, useState} from "react"
+import {isNative} from "../lib/utils.ts";
 
 const useGetBalance = (token?: string) => {
     const {address, client} = useWallet()
@@ -9,7 +10,7 @@ const useGetBalance = (token?: string) => {
         setLoading(true);
 //        try {
             if (client && address) {
-                if (token?.startsWith('u') || token?.startsWith('token')) {
+                if (isNative(token)) {
                     // @ts-ignore
                     const bal = await client?.getBalance(address, token)
                     setBalance(bal.amount / 1000000)

@@ -11,3 +11,7 @@ export const copyToClipboard = async (text: string) => {
         console.log("error", error);
     }
 }
+
+export const isNative = (token?: string | undefined) => {
+    return token?.startsWith('u') || token?.startsWith('token')
+}

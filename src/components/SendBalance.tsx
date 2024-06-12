@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import {calculateFee, coin, GasPrice} from "@cosmjs/stargate"
 import {useWallet} from "cloud-social-wallet";
 import classNames from "classnames"
@@ -8,11 +8,12 @@ import Button from "./Button";
 import styles from './SendBalance.module.scss'
 import {useGetBalance} from "../hooks";
 import SelectBox from "./SelectBox";
-import {tokens} from "../Network.ts";
+import {NETWORK, tokens} from "../Network.ts";
+import {isNative} from "../lib/utils.ts";
 
 const SendBalance = () => {
     const {address, client} = useWallet()
-    const [token, setToken] = useState('')
+    const [token, setToken] = useState('loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk')
     const {balance, refetch, reset} = useGetBalance(token)
 
     const [loading, setLoading] = useState(false)
@@ -30,29 +31,56 @@ const SendBalance = () => {
 //                recipient: recipient, amount: `${Number(amount) * 1000000}`,
 //            }
 //        }
-        const gasPrice = GasPrice.fromString("0.03" + token);
+        const gasPrice = GasPrice.fromString("0.03" + "upoa");
         const txFee = calculateFee(2000000, gasPrice);
-        try {
-            // let tx = await client.execute(address,token, msg, txFee, "Transfer Funds to Wallet")
+//        try {
+        // let tx = await client.execute(address,token, msg, txFee, "Transfer Funds to Wallet")
+        let tx = undefined
+        if (isNative(token)) {
             // @ts-ignore
-            const tx = await client?.sendTokens(
+            tx = await client?.sendTokens(
                 address,
                 recipient,
                 [coin(Number(amount) * 1000000, token)],
                 txFee,
                 "Successfully Transferred"
             );
-            console.log(tx);
-            setTx(tx)
-            setError(undefined)
-            toast.success('Successfully Transferred')
-        } catch (e: any) {
-            setTx({})
-            const msg = e.message.substring(e.message.indexOf("failed to execute message;"))?.substring(0, 800);
-            console.error("e", e.message)
-            toast.error(msg)
-            setError(msg)
+        } else {
+            console.log("msg", {
+                token,
+                txFee,
+                transfer: {
+                    owner: address,
+                    recipient: recipient,
+                    amount: Number(amount) * 1000000
+                }
+            })
+            // @ts-ignore
+            tx = await client?.execute(
+                address,
+                token,
+                {
+                    transfer: {
+                        owner: address,
+                        recipient: recipient,
+                        amount: `${Number(amount) * 1000000}`
+                    }
+                },
+                txFee,
+                "Transferred"
+            );
         }
+        console.log(tx);
+        setTx(tx)
+        setError(undefined)
+        toast.success('Successfully Transferred')
+//        } catch (e: any) {
+//            setTx({})
+//            const msg = e.message.substring(e.message.indexOf("failed to execute message;"))?.substring(0, 800);
+//            console.error("e", e.message)
+//            toast.error(msg)
+//            setError(msg)
+//        }
         setLoading(false)
     }
     const invalid = Number(amount) > balance
@@ -63,6 +91,11 @@ const SendBalance = () => {
         reset?.();
         refetch?.();
     }
+
+    useEffect(() => {
+        onChangeToken(token)
+    }, [])
+
     return (<div className="sendBalance">
         <label>Token<span className={"required"}>*</span>:</label>
         <SelectBox onSelect={onChangeToken}/>
@@ -88,6 +121,7 @@ const SendBalance = () => {
                 disabled={disable}
             >{loading ? "Sending..." : "Send"}
             </Button>
+            {loading ? <p className="cancel-btn" onClick={() => setLoading(false)}>cancel tx</p> : ""}
             <Tooltip id="low-balance"/>
             {/*<Button className={styles.close} outline type={'button'} onClick={() => setVisibility('main')}>close</Button>*/}
         </div>
