@@ -6,6 +6,7 @@ const SelectBox = ({onSelect}: { onSelect: (token: string) => void }) => {
     const [selected, setSelected] = useState('')
 
     useEffect(() => {
+        console.log("selectedselected",selected)
         onSelect(selected)
     }, [selected])
 

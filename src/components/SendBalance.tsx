@@ -14,7 +14,7 @@ import {isNative} from "../lib/utils.ts";
 const SendBalance = () => {
     const {address, client} = useWallet()
     const [token, setToken] = useState('loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk')
-    const {balance, refetch, reset} = useGetBalance(token)
+    const {balance, refetch} = useGetBalance({token})
 
     const [loading, setLoading] = useState(false)
     const [recipient, setRecipient] = useState('')
@@ -22,6 +22,10 @@ const SendBalance = () => {
     const [tx, setTx] = useState<any>({})
     const [error, setError] = useState(undefined)
 
+    const resetForm = () => {
+        setAmount('');
+        setRecipient('');
+    }
     const send = async () => {
         setLoading(true)
         setError(undefined)
@@ -73,6 +77,8 @@ const SendBalance = () => {
         console.log(tx);
         setTx(tx)
         setError(undefined)
+        resetForm();
+        refetch?.()
         toast.success('Successfully Transferred')
 //        } catch (e: any) {
 //            setTx({})
@@ -88,8 +94,6 @@ const SendBalance = () => {
 
     const onChangeToken = (t: string) => {
         setToken(t);
-        reset?.();
-        refetch?.();
     }
 
     useEffect(() => {

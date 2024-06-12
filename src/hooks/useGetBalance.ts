@@ -2,7 +2,7 @@ import {useWallet} from "cloud-social-wallet"
 import {useEffect, useState} from "react"
 import {isNative} from "../lib/utils.ts";
 
-const useGetBalance = (token?: string) => {
+const useGetBalance = ({token}:{ token?: string}) => {
     const {address, client} = useWallet()
     const [loading, setLoading] = useState(false)
     const [balance, setBalance] = useState(0)
@@ -33,7 +33,7 @@ const useGetBalance = (token?: string) => {
         getBalance()?.finally(() => {
             setLoading(false);
         })
-    }, [address, client])
+    }, [address, client, token])
 
     return {balance, refetch: getBalance, loading, reset: () => setBalance(0)}
 }
