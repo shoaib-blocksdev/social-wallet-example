@@ -1,4 +1,5 @@
 export const network: 'mainnet' | 'testnet' = 'mainnet';
+export const COPNTEST = 'loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk'
 
 export const NETWORKS = {
     'loop': {
@@ -12,7 +13,8 @@ export const NETWORKS = {
             rest: '',
             denom: 'untrn',
             prefix: 'neutron',
-            token: 'NTRN'
+            token: 'NTRN',
+            tokens: {}
         },
         'mainnet': {
             name: "COPNTEST",
@@ -24,7 +26,14 @@ export const NETWORKS = {
             rest: '',
             denom: 'token',
             prefix: 'loop',
-            token: 'TOKEN'
+            token: 'TOKEN',
+            tokens: {
+                [COPNTEST]: {
+                    token: "COPNTEST",
+                    isNative: false,
+                    address: COPNTEST
+                }
+            }
         }
     },
     'neutron': {
@@ -38,7 +47,8 @@ export const NETWORKS = {
             rest: '',
             denom: 'untrn',
             prefix: 'neutron',
-            token: 'NTRN'
+            token: 'NTRN',
+            tokens: {}
         },
         'mainnet': {
             name: "Neutron",
@@ -50,17 +60,9 @@ export const NETWORKS = {
             rest: '',
             denom: 'untrn',
             prefix: 'neutron',
-            token: 'NTRN'
+            token: 'NTRN',
+            tokens: {}
         }
     }
 }
 export const NETWORK = NETWORKS['loop'][network] as NETWORK
-
-export const COPNTEST = 'loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk'
-export const tokens: Tokens = {
-    [COPNTEST]: {
-        token: "COPNTEST",
-        isNative: false,
-        address: "loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk"
-    }
-}

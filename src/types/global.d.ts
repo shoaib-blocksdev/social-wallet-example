@@ -22,7 +22,8 @@ declare global {
         rest?: string,
         denom: string,
         prefix: string,
-        token: string
+        token: string,
+        tokens: Tokens
     }
 
     type Token = {

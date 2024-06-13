@@ -8,7 +8,7 @@ import Button from "./Button";
 import styles from './SendBalance.module.scss'
 import {useGetBalance} from "../hooks";
 import SelectBox from "./SelectBox";
-import {COPNTEST, tokens} from "../Network.ts";
+import {COPNTEST, NETWORK} from "../Network.ts";
 import {isNative} from "../lib/utils.ts";
 
 const SendBalance = () => {
@@ -109,7 +109,7 @@ const SendBalance = () => {
         <div className={styles.amountLabel}>
             <label>Amount <span className={"required"}>*</span>:</label>
             <small
-                onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {tokens?.[token]?.token ?? token}</small>
+                onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {NETWORK.tokens?.[token]?.token ?? token}</small>
         </div>
         <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'Amount'}/>
         {

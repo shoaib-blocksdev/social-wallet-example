@@ -4,7 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 import {useWallet} from "cloud-social-wallet";
 import Button from './Button.tsx';
 import {useGetBalance, useScreen} from "../hooks";
-import {COPNTEST, network, tokens} from "../Network.ts";
+import {COPNTEST, network, NETWORK} from "../Network.ts";
 
 const Layout = ({children}: { children?: ReactNode }) => {
     const [initLoading, setInitLoading] = useState(true)
@@ -31,7 +31,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
                         <div className={"balance-sm"}>
                             <div className={"balance"}>
                                 <h6>Balance</h6>
-                                <h2>{balance} <span>{tokens?.[COPNTEST]?.token ?? ''}</span></h2>
+                                <h2>{balance} <span>{NETWORK.tokens?.[COPNTEST]?.token ?? ''}</span></h2>
                             </div>
                             <div className={"logout-sm"}>
                                 <p onClick={logout}>logout</p>
@@ -45,7 +45,7 @@ const Layout = ({children}: { children?: ReactNode }) => {
                             <div id="nav-header">
                                 <div className={"balance"}>
                                     <h6>Balance</h6>
-                                    <h2>{balance} <span>{tokens?.[COPNTEST]?.token ?? ''}</span></h2>
+                                    <h2>{balance} <span>{NETWORK.tokens?.[COPNTEST]?.token ?? ''}</span></h2>
                                 </div>
                                 {/*<label htmlFor="nav-toggle"><span id="nav-toggle-burger"></span></label>*/}
                                 <hr/>
