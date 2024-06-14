@@ -1,8 +1,13 @@
 export const network: 'mainnet' | 'testnet' = 'mainnet';
 export const COPNTEST = 'loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk'
 
+export enum CHAINS {
+    'LOOP',
+    'NEUTRON'
+}
+
 export const NETWORKS = {
-    'loop': {
+    [CHAINS.LOOP]: {
         'testnet': {
             name: "Neutron",
             title: "Neutron",
@@ -36,7 +41,7 @@ export const NETWORKS = {
             }
         }
     },
-    'neutron': {
+    [CHAINS.NEUTRON]: {
         'testnet': {
             name: "Neutron",
             title: "Neutron",
@@ -65,4 +70,5 @@ export const NETWORKS = {
         }
     }
 }
-export const NETWORK = NETWORKS['loop'][network] as NETWORK
+
+export const NETWORK = NETWORKS[CHAINS.LOOP][network] as NETWORK
