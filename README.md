@@ -10,7 +10,7 @@ import {WalletProvider} from "cloud-social-wallet";
 
 function App() {
     return (
-        <WalletProvider config={{rpc: '', backend_url: ''}}>
+        <WalletProvider config={{rpc: '', backend_url: '', prefix: 'juno'}}>
             <WalletApp/>
         </WalletProvider>
     )
