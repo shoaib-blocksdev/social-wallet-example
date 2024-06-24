@@ -30,15 +30,9 @@ const SendBalance = () => {
         setLoading(true)
         setError(undefined)
         setTx({})
-//        const msg = {
-//            transfer: {
-//                recipient: recipient, amount: `${Number(amount) * 1000000}`,
-//            }
-//        }
         const gasPrice = GasPrice.fromString("0.03" + "upoa");
         const txFee = calculateFee(2000000, gasPrice);
         try {
-            // let tx = await client.execute(address,token, msg, txFee, "Transfer Funds to Wallet")
             let tx = undefined
             if (isNative(token)) {
                 // @ts-ignore
@@ -109,7 +103,7 @@ const SendBalance = () => {
         <div className={styles.amountLabel}>
             <label>Amount <span className={"required"}>*</span>:</label>
             <small
-                onClick={() => balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {NETWORK.tokens?.[token]?.token ?? token}</small>
+                onClick={() => !isNative(token) ? setAmount(balance) : balance > 0.5 ? setAmount(balance - 0.5) : setAmount(0)}>{balance.toFixed(6)} {NETWORK.tokens?.[token]?.token ?? token}</small>
         </div>
         <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder={'Amount'}/>
         {
@@ -127,7 +121,6 @@ const SendBalance = () => {
             </Button>
             {loading ? <p className="cancel-btn" onClick={() => setLoading(false)}>cancel tx</p> : ""}
             <Tooltip id="low-balance"/>
-            {/*<Button className={styles.close} outline type={'button'} onClick={() => setVisibility('main')}>close</Button>*/}
         </div>
         <div className={"error"}>
             {
@@ -139,10 +132,6 @@ const SendBalance = () => {
                 !error && (Object.keys(tx).length && tx?.transactionHash) ?
                     <small>Successfully Transferred</small> : null
             }
-            {/*{*/}
-            {/*    (balance <= 0 && !balLoading) ?*/}
-            {/*        <small>Insufficient Balance</small> : null*/}
-            {/*}*/}
         </div>
     </div>)
 }
