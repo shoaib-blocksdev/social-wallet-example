@@ -33,6 +33,7 @@ function WalletApp() {
                     <button onClick={() => login('google')}>Google Login</button>
                     <button onClick={() => login('facebook')}>Facebook Login</button>
                     <button onClick={() => login('twitter')}>Twitter Login</button>
+                    <button onClick={() => login('auth')}>Login with Email</button>
                 </>
             }
         </>
