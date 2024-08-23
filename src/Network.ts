@@ -1,5 +1,5 @@
 export const network: 'mainnet' | 'testnet' = 'mainnet';
-export const COPNTEST = 'loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk'
+export const COPNTEST_ADDR = 'loop1erj9z696sdftjtxpjcf7dvmf709nmsqtnf2wq05fq0w6cuskza3sylkadk'
 
 export enum CHAINS {
     'LOOP',
@@ -33,10 +33,10 @@ export const NETWORKS = {
             prefix: 'loop',
             token: 'TOKEN',
             tokens: {
-                [COPNTEST]: {
+                [COPNTEST_ADDR]: {
                     token: "COPNTEST",
                     isNative: false,
-                    address: COPNTEST
+                    address: COPNTEST_ADDR
                 }
             }
         }

@@ -21,7 +21,7 @@
         display: none;
     }
 
-    &:hover {
+    &:hover, &:focus, &:active {
         color: black;
         background-color: #bdf3b0;
         border-color: #bdf3b0;
